@@ -54,9 +54,12 @@ export const filmSeed = async (
     const prisma = await connectDB();
     log('Seeding to database...');
 
-    await prisma.review.deleteMany();
-    await prisma.film.deleteMany();
-    await prisma.genre.deleteMany();
+    await prisma.$executeRaw`TRUNCATE TABLE IF EXISTS "reviews" RESTART IDENTITY CASCADE`;
+    //await prisma.review.deleteMany();
+    await prisma.$executeRaw`TRUNCATE TABLE IF EXISTS "films" RESTART IDENTITY CASCADE`;
+    //await prisma.film.deleteMany();
+    await prisma.$executeRaw`TRUNCATE TABLE IF EXISTS "genres" RESTART IDENTITY CASCADE`;
+    //await prisma.genre.deleteMany();
 
     await prisma.genre.createMany({
         data: genres,
