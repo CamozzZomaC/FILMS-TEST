@@ -33,11 +33,11 @@ describe('Given a instantiated Filns Controller', () => {
 
     describe('When we instantiate it', () => {
         test('Then it should be defined', () => {
-            //Act 6 aSSERT
+            //Act & Assert
             expect(controller).toBeDefined();
         });
         test('Then it should be an instance of FilmsRepo', () => {
-            //Act &Assert
+            //Act & Assert
             expect(controller).toBeInstanceOf(FilmsController)
         });
     });
